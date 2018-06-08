@@ -15,9 +15,21 @@ namespace GuessingGameTest
         }
 
         [Fact]
-        public void TestMethod()
+        public void CanRead()
         {
-            Assert.Equal(1, Program.TestMethod());
+            Assert.Equal("File read", Program.ReadFile());
+        }
+
+        [Fact]
+        public void CanUpdate()
+        {
+            Assert.Equal("File updated", Program.UpdateFile("stuff"));
+        }
+
+        [Fact]
+        public void CanDelete()
+        {
+            Assert.Equal("File deleted", Program.DeleteFile());
         }
     }
 }
