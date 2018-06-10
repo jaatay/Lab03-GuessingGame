@@ -31,5 +31,12 @@ namespace GuessingGameTest
         {
             Assert.Equal("File deleted", Program.DeleteFile());
         }
+
+        [Fact]
+        public void CanAcceptInput()
+        {
+            
+            Assert.Equal(Program.CreateFile(), Program.UserChoice());
+        }
     }
 }

@@ -6,20 +6,86 @@ namespace GuessingGame
 {
     public class Program
     {
+        
+        public static void Main(string[] args)
+        {
+             StartGame();
+           
+        }
+
         /// <summary>
         /// Global string setting text file path
         /// </summary>
         public static string path = "MyFile.txt";
 
-        public static void Main(string[] args)
-        {
-            Console.WriteLine("Hello World!");
-            CreateFile();
-            ReadFile();
-            UpdateFile("I just got updated");
+        /// <summary>
+        /// Global boolean value to continue game while loop.
+        /// </summary>
+        public static bool keepPlaying = true;
+
+        /// <summary>
+        /// Presents the user with a set of menu options
+        /// </summary>
+        public static void StartGame(){
+
+            while(keepPlaying == true)
+            {
+                Console.WriteLine("LET'S PLAY A GAME!");
+                Console.WriteLine("The object is to guess a word, one letter at a time.");
+                Console.WriteLine("Choose an option:");
+                Console.WriteLine("1: Play Game");
+                Console.WriteLine("2: Add new word");
+                Console.WriteLine("3: Admin");
+                Console.WriteLine("4: Quit");
+
+                Int32.TryParse(Console.ReadLine(), out int userNumber);
+                if (userNumber == 0 || userNumber > 4)
+                {
+                    Console.Clear();
+                    Console.WriteLine("Please enter a valid option.");
+                }
+
+                UserChoice(userNumber);
+            }
+            Console.WriteLine("Press any key to exit.");
+            Console.ReadLine();
         }
 
+        /// <summary>
+        /// Method that p
+        /// </summary>
+        /// <param name="userNumber"></param>
+        /// <returns></returns>
+        public static int UserChoice(int userNumber)
+        {
+            if (userNumber == 1)
+            {
+                CreateFile();
+            }
+            if (userNumber == 2)
+            {
 
+            }
+            if (userNumber == 3)
+            {
+
+            }
+            if (userNumber == 4)
+            {
+                keepPlaying = false;
+                Console.WriteLine("Thanks for playing.");
+            }
+
+            return 0;
+        }
+        
+        //new game method
+        public static void NewGame()
+        {
+
+        }
+
+        //add word method
 
         //FILE METHODS BELOW
 
@@ -33,7 +99,10 @@ namespace GuessingGame
             {
                 using (StreamWriter sw = new StreamWriter(path))
                 {
-                    sw.Write("This is my file");
+                    sw.WriteLine("onomatopoeia");
+                    sw.WriteLine("cat");
+                    sw.WriteLine("bat");
+                    sw.WriteLine("hat");
                 }
             }
 
@@ -72,7 +141,7 @@ namespace GuessingGame
             using (StreamWriter sw = File.AppendText(path))
             {
                 sw.WriteLine(userInput);
-                Console.WriteLine($"File updated with {userInput}");
+                Console.WriteLine($"File updated with :{userInput}");
             }
 
             return "File updated";
