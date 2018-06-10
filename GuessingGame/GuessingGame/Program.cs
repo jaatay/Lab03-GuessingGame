@@ -9,7 +9,8 @@ namespace GuessingGame
         
         public static void Main(string[] args)
         {
-             StartGame();
+            CreateFile();
+            StartGame();
            
         }
 
@@ -34,12 +35,12 @@ namespace GuessingGame
                 Console.WriteLine("The object is to guess a word, one letter at a time.");
                 Console.WriteLine("Choose an option:");
                 Console.WriteLine("1: Play Game");
-                Console.WriteLine("2: Add new word");
-                Console.WriteLine("3: Admin");
+                Console.WriteLine("2: Add New Word");
+                Console.WriteLine("3: View Current Words");
                 Console.WriteLine("4: Quit");
 
                 Int32.TryParse(Console.ReadLine(), out int userNumber);
-                if (userNumber == 0 || userNumber > 4)
+                if (userNumber == 0 || userNumber > 4 || userNumber < 0)
                 {
                     Console.Clear();
                     Console.WriteLine("Please enter a valid option.");
@@ -52,15 +53,15 @@ namespace GuessingGame
         }
 
         /// <summary>
-        /// Method that p
+        /// Takes user input from StartGame() and calls method based on choice.
         /// </summary>
         /// <param name="userNumber"></param>
-        /// <returns></returns>
+        /// <returns>Returns int 0 and error message if the user does not select a valid option</returns>
         public static int UserChoice(int userNumber)
         {
             if (userNumber == 1)
             {
-                CreateFile();
+                
             }
             if (userNumber == 2)
             {
@@ -68,6 +69,8 @@ namespace GuessingGame
             }
             if (userNumber == 3)
             {
+                Console.Clear();
+                ReadFile();
 
             }
             if (userNumber == 4)
