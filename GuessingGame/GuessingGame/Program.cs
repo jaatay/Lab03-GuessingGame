@@ -113,6 +113,7 @@ namespace GuessingGame
         {
             Console.Clear();
             string guessThisWord = PickRandomWord();
+            keepPlayingGuess = true;
            
             while (keepPlayingGuess)
             {
@@ -179,6 +180,7 @@ namespace GuessingGame
         {
 
             Console.Clear();
+
             Console.WriteLine($"Letters guessed right: {rightLetter}");
             Console.WriteLine($"Letters guessed wrong: {wrongLetter}");
 
@@ -186,6 +188,7 @@ namespace GuessingGame
             {
                 rightLetter += guessedLetter;
                 Console.WriteLine($"Correct Letter: {guessedLetter}");
+
             }
             else
             {
@@ -193,7 +196,9 @@ namespace GuessingGame
                 Console.WriteLine($"Incorrect Letter: {guessedLetter}");
             }
 
+            //if user guesses correct letter, compare total correct letters with random word
             CompareWord(inputWord, rightLetter);
+
             Console.WriteLine("");
         }
 
@@ -205,6 +210,7 @@ namespace GuessingGame
         /// <returns></returns>
         public static void CompareWord(string guessWord, string inputGuessedLetters)
         {
+           
             if (guessWord.Length == inputGuessedLetters.Length)
             {
                 Console.WriteLine($"Congratulations you got all the letters in the word {guessWord}!");
