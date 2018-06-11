@@ -77,7 +77,7 @@ namespace GuessingGame
                 Console.WriteLine("Please enter the word you would like to add below:");
                 try
                 {
-                    string newWord = Console.ReadLine();
+                    string newWord = Console.ReadLine().ToLower();
                     if (newWord == "" || newWord == null)
                     {
                         throw new FormatException();
@@ -146,7 +146,7 @@ namespace GuessingGame
 
             try
             {
-                string guessedLetter = Console.ReadLine();
+                string guessedLetter = Console.ReadLine().ToLower();
 
                 if (guessedLetter.Length > 1)
                 {
@@ -179,7 +179,6 @@ namespace GuessingGame
         {
 
             Console.Clear();
-          
             Console.WriteLine($"Letters guessed right: {rightLetter}");
             Console.WriteLine($"Letters guessed wrong: {wrongLetter}");
 
@@ -187,7 +186,6 @@ namespace GuessingGame
             {
                 rightLetter += guessedLetter;
                 Console.WriteLine($"Correct Letter: {guessedLetter}");
-                
             }
             else
             {
@@ -197,7 +195,6 @@ namespace GuessingGame
 
             CompareWord(inputWord, rightLetter);
             Console.WriteLine("");
-     
         }
 
         /// <summary>
@@ -208,12 +205,10 @@ namespace GuessingGame
         /// <returns></returns>
         public static void CompareWord(string guessWord, string inputGuessedLetters)
         {
-    
             if (guessWord.Length == inputGuessedLetters.Length)
             {
                 Console.WriteLine($"Congratulations you got all the letters in the word {guessWord}!");
                 keepPlayingGuess = false;
-               
             }
         }
 
@@ -229,7 +224,6 @@ namespace GuessingGame
             {
                 using (StreamWriter sw = new StreamWriter(path))
                 {
-                   
                     sw.WriteLine("cat");
                     sw.WriteLine("bat");
                     sw.WriteLine("hat");
@@ -253,7 +247,6 @@ namespace GuessingGame
                 Console.WriteLine("The current words are: ");
                 foreach (string value in fileText)
                 {
-
                     Console.WriteLine(value);
                 }
             }
