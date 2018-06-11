@@ -114,10 +114,13 @@ namespace GuessingGame
             Console.Clear();
             string guessThisWord = PickRandomWord();
             keepPlayingGuess = true;
+            rightLetter = "";
+            wrongLetter = "";
            
             while (keepPlayingGuess)
             {
                 GuessLetter(guessThisWord);
+               
             }
         }
 
@@ -142,8 +145,9 @@ namespace GuessingGame
         /// <returns>returns the user's guess</returns>
         public static string GuessLetter(string inputWord)
         {
-        
+
             Console.WriteLine("Pick a SINGLE character to guess.");
+           
 
             try
             {
@@ -160,6 +164,7 @@ namespace GuessingGame
                 }
 
                 CompareLetter(inputWord, guessedLetter);
+     
                 return guessedLetter;
             }
             catch (FormatException)
@@ -181,6 +186,7 @@ namespace GuessingGame
 
             Console.Clear();
 
+          
             Console.WriteLine($"Letters guessed right: {rightLetter}");
             Console.WriteLine($"Letters guessed wrong: {wrongLetter}");
 
