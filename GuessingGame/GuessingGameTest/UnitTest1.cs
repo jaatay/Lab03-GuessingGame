@@ -36,7 +36,9 @@ namespace GuessingGameTest
         public void CanAcceptInput()
         {
             
-            Assert.Equal(Program.CreateFile(), Program.UserChoice());
+            Assert.Equal(0, Program.UserChoice(0));
         }
+
+        
     }
 }
