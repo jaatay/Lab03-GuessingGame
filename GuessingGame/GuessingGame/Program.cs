@@ -45,7 +45,8 @@ namespace GuessingGame
                 Console.WriteLine("1: Play Game");
                 Console.WriteLine("2: Add New Word");
                 Console.WriteLine("3: View Current Words");
-                Console.WriteLine("4: Quit");
+                Console.WriteLine("4: Delete Word");
+				Console.WriteLine("5: Quit");
 
                 Int32.TryParse(Console.ReadLine(), out int userNumber);
                 if (userNumber == 0 || userNumber > 4 || userNumber < 0)
@@ -71,6 +72,7 @@ namespace GuessingGame
             {
                 NewGame();
             }
+
             if (userNumber == 2)
             {
                 Console.Clear();
@@ -91,13 +93,21 @@ namespace GuessingGame
                     Console.WriteLine("Invalid input");
                 }
             }
+
             if (userNumber == 3)
             {
                 Console.Clear();
                 ReadFile();
                 
             }
-            if (userNumber == 4)
+
+			if (userNumber == 4)
+			{
+				Console.Clear();
+				DeleteWord();
+			}
+
+            if (userNumber == 5)
             {
                 keepPlayingMain = false;
                 Console.WriteLine("Thanks for playing.");
@@ -186,7 +196,6 @@ namespace GuessingGame
 
             Console.Clear();
 
-          
             Console.WriteLine($"Letters guessed right: {rightLetter}");
             Console.WriteLine($"Letters guessed wrong: {wrongLetter}");
 
@@ -223,6 +232,44 @@ namespace GuessingGame
                 keepPlayingGuess = false;
             }
         }
+
+		//method to delete a word
+		public static void DeleteWord()
+		{
+			ReadFile();
+			Console.WriteLine("Type the word you want to delete.");
+			try
+			{
+				string deleteThis = Console.ReadLine();
+
+				if(deleteThis == "")
+				{
+					throw new FormatException();
+				}
+
+				deleteThis.ToLower();
+				Console.Clear();
+				Console.WriteLine($"You are deleting {deleteThis}");
+				Console.WriteLine("press key to continue");
+				Console.ReadLine();
+				string[] fileText = File.ReadAllLines(path);
+
+				foreach(string item in fileText)
+				{
+					if(item != deleteThis)
+					{
+						File.OpenWrite(item);
+						
+					}
+				}
+				Console.Clear();
+				ReadFile();
+			}
+			catch(FormatException)
+			{
+
+			}
+		}
 
         //FILE METHODS BELOW
 
