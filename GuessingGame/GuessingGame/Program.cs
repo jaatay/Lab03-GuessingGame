@@ -256,9 +256,12 @@ namespace GuessingGame
 
 				foreach(string item in fileText)
 				{
+					
 					if(item != deleteThis)
 					{
-						File.OpenWrite(item);
+						File.WriteAllText(path, item);
+						
+						
 						
 					}
 				}
